@@ -1,0 +1,25 @@
+<div class="flex bg-white border-b border-gray-200 z-100 h-16 items-center">
+  <div class="w-full max-w-screen-xl relative mx-auto px-6">
+    <div class="flex items-center">
+      <div class="flex-grow">
+        <div class="flex items-center">
+          <%= link_to Rails.configuration.application_name, root_path, class: 'block lg:mr-4 text-black font-bold' %>
+        </div>
+      </div>
+
+      <div class="flex items-center -mr-2">
+        <%= link_to 'Posts', posts_path, class: "bg-indigo-500 hover:bg-indigo-400 focus:shadow-outline focus:outline-none py-1 px-2 rounded text-white font-semibold text-sm mx-2" %>
+        <% if user_signed_in? %>
+          <%= link_to edit_user_registration_path, class: "mx-2 inline-flex" do %>
+            <%= image_tag gravatar_image_url(current_user.email), class: "rounded h-5 w-5", alt: "@#{current_user.name.mentionable}" %>
+            <span class="font-semibold text-gray-800 text-sm hover:no-underline hover:text-gray-700 ml-2"><%= current_user.name %></span>
+          <% end %>
+          <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: "font-semibold text-gray-800 text-sm mx-2 hover:no-underline hover:text-gray-700" %>
+        <% else %>
+          <%= link_to 'Sign Up', new_user_registration_path, class: "font-semibold text-gray-800 text-sm mx-2 hover:no-underline hover:text-gray-700" %>
+          <%= link_to 'Sign In', new_user_session_path, class: "font-semibold text-gray-800 text-sm mx-2 hover:no-underline hover:text-gray-700" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

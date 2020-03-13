@@ -1,0 +1,17 @@
+<%= form_with(model: post, local: true, html: { class: "px-8 py-6" }) do |form| %>
+  <%= render "devise/shared/error_messages", resource: post %>
+
+  <div class="my-4">
+    <%= form.label :title, class: "block text-gray-700 text-sm font-semibold mb-2" %>
+    <%= form.text_field :title, class: "appearance-none text-sm border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+  </div>
+
+  <div class="mb-4">
+    <%= form.label :description, class: "block text-gray-700 text-sm font-semibold mb-2" %>
+    <%= form.text_area :description, class: "appearance-none text-sm border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+  </div>
+
+  <div class="mt-6">
+    <%= form.submit class: "group cursor-pointer relative font-semibold w-full flex justify-center py-2 px-4 border border-transparent text-sm rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out" %>
+  </div>
+<% end %>

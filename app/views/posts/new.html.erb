@@ -1,0 +1,18 @@
+<div class="min-h-full flex items-center justify-center bg-gray-50">
+  <div class="max-w-sm w-full">
+    <div class="flex justify-between items-center">
+      <h2 class="text-2xl tracking-tight font-light text-gray-900">
+        New Post
+      </h2>
+
+      <%= link_to posts_path, class: "bg-transparent hover:bg-blue-500 text-blue-700 hover:text-white text-sm py-1 px-2 border border-blue-500 hover:border-transparent rounded inline-flex items-center" do %>
+        <i class="fas fa-chevron-left mr-2"></i>
+        <span>Back</span>
+      <% end %>
+    </div>
+
+    <div class="shadow border border-gray-100 rounded-lg mt-5">
+      <%= render 'form', post: @post %>
+    </div>
+  </div>
+</div>

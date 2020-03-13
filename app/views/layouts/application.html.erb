@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title><%= Rails.configuration.application_name %></title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <div class="font-sans">
+    <div id="header">
+      <%= render partial: 'shared/navbar' %>
+    </div>
+
+    <div class="px-6 pt-12 pb-40 md:pb-24 w-10/12 mx-auto">
+      <%= render partial: 'shared/notices' %>
+
+      <%= yield %>
+    </div>
+  </div>
+  </body>
+</html>

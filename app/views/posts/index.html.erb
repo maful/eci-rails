@@ -1,0 +1,40 @@
+<div class="w-full flex justify-between items-center mb-4">
+  <h1 class="text-gray-900 font-light text-3xl leading-none">Posts</h1>
+  <div>
+    <%= link_to 'New Post', new_post_path, class: "bg-blue-500 hover:bg-blue-700 text-white text-sm py-2 px-4 rounded" %>
+  </div>
+</div>
+
+<div class="mt-0 border-t border-b border-gray-300 overflow-hidden relative">
+  <table class="w-full text-left border-collapse">
+    <thead>
+      <tr>
+        <th class="text-sm font-semibold text-gray-700 p-2 bg-gray-100">#</th>
+        <th class="text-sm font-semibold text-gray-700 p-2 bg-gray-100">Title</th>
+        <th class="text-sm font-semibold text-gray-700 p-2 bg-gray-100">Description</th>
+        <th class="text-sm font-semibold text-gray-700 p-2 bg-gray-100" colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody class="align-baseline">
+      <% if @posts.length > 0 %>
+        <% @posts.each_with_index do |post, idx| %>
+          <tr>
+            <td class="p-2 border-t border-gray-300 text-sm"><%= idx + 1 %></td>
+            <td class="p-2 border-t border-gray-300 text-sm"><%= post.title %></td>
+            <td class="p-2 border-t border-gray-300 text-sm"><%= post.description %></td>
+            <td class="p-2 border-t border-gray-300 text-sm text-center"><%= link_to 'Show', post %></td>
+            <td class="p-2 border-t border-gray-300 text-sm text-center"><%= link_to 'Edit', edit_post_path(post) %></td>
+            <td class="p-2 border-t border-gray-300 text-sm text-center text-red-500">
+              <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+            </td>
+          </tr>
+        <% end %>
+      <% else %>
+        <tr>
+          <td class="p-2 border-t border-gray-300 text-sm" colspan="4">No Posts yet</td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

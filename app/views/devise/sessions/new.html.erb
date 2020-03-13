@@ -1,0 +1,41 @@
+<div class="min-h-full flex items-center justify-center bg-gray-50">
+  <div class="max-w-sm w-full">
+    <div>
+      <h2 class="text-center text-2xl tracking-tight font-light text-gray-900">
+        Sign in to your account
+      </h2>
+    </div>
+    <div class="shadow border border-gray-100 rounded-lg mt-8">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "px-8 py-6" }) do |f| %>
+        <div class="mb-4">
+          <%= f.label :email, class: "block text-gray-700 text-sm font-semibold mb-2" %>
+          <%= f.email_field :email, class: "appearance-none text-sm border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline", autofocus: true, autocomplete: "email" %>
+        </div>
+
+        <div class="mb-4">
+          <%= f.label :password, class: "block text-gray-700 text-sm font-semibold mb-2" %>
+          <%= f.password_field :password, class: "appearance-none text-sm border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline", autocomplete: "current-password" %>
+        </div>
+
+        <div class="mt-6 flex items-center justify-between">
+          <% if devise_mapping.rememberable? %>
+            <div class="flex items-center">
+              <%= f.check_box :remember_me, class: "form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out" %>
+              <%= f.label :remember_me, class: "ml-2 block text-sm leading-5 text-gray-700" %>
+            </div>
+          <% end %>
+
+          <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+            <div class="text-sm leading-5">
+              <%= link_to "Forgot your password?", new_password_path(resource_name), class: "font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150" %>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="mt-6">
+          <%= f.submit "Sign in", class: "group relative font-semibold w-full flex justify-center py-2 px-4 border border-transparent text-sm rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
