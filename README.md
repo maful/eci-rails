@@ -1,3 +1,5 @@
+👉 **Note:** This project under development.
+
 # Eci Rails Template
 
 ## Getting Started
