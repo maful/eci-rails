@@ -1,5 +1,3 @@
-👉 **Note:** This project under development.
-
 # Eci Rails Template
 
 Special thanks to [@excid3](https://github.com/excid3) (Creator of GoRails.com) for inspiring me to create this project.
