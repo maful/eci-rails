@@ -136,6 +136,11 @@ def stop_spring
   run "spring stop"
 end
 
+def preexisting_git_repo?
+  @preexisting_git_repo ||= (File.exist?(".git") || :nope)
+  @preexisting_git_repo == true
+end
+
 # Main setup
 add_template_repository_to_source_path
 
@@ -158,7 +163,7 @@ after_bundle do
   rails_command "db:migrate"
 
   # Commit everything to git
-  git :init
+  git :init unless preexisting_git_repo?
   git add: '.'
   git commit: %Q{ -m 'Initial commit' }
 
