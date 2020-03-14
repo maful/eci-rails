@@ -1,6 +1,8 @@
 require 'fileutils'
 require 'shellwords'
 
+RAILS_REQUIREMENT = "~> 6.0.0".freeze
+
 # Copied from: https://github.com/mattbrictson/rails-template
 # Add this template directory to source_paths so that Thor actions like
 # copy_file and template resolve against our source files. If this file was
@@ -27,6 +29,15 @@ end
 
 def rails_version
   @rails_version ||= Gem::Version.new(Rails::VERSION::STRING)
+end
+
+def assert_minimum_rails_version
+  requirement = Gem::Requirement.new(RAILS_REQUIREMENT)
+  return if requirement.satisfied_by?(rails_version)
+
+  prompt = "This template requires Rails #{RAILS_REQUIREMENT}. "\
+           "You are using #{rails_version}. Continue anyway?"
+  exit 1 if no?(prompt)
 end
 
 def add_gems
@@ -142,6 +153,8 @@ def preexisting_git_repo?
 end
 
 # Main setup
+assert_minimum_rails_version
+
 add_template_repository_to_source_path
 
 add_gems

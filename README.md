@@ -4,6 +4,8 @@ Special thanks to [@excid3](https://github.com/excid3) (Creator of GoRails.com) 
 
 ## Getting Started
 
+👉 Eci requires Rails >= 6.0
+
 #### Features
 *   Authentication
 *   Webpacker configuration by default
