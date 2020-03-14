@@ -15,6 +15,8 @@ Special thanks to [@excid3](https://github.com/excid3) (Creator of GoRails.com) 
 - [ ] Use Tailwind CSS components by default
 - [ ] Use Sidekiq for background processing
 - [ ] Integrate Devise to ActionCable Rails
+- [ ] Setup RSpec for amazing test
+- [ ] Setup Docker out of the box
 
 #### Creating a new amazing app 😍
 
