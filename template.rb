@@ -85,10 +85,10 @@ def setup_tailwindcss
   content_purgecss = <<-JS
 if (process.env.RAILS_ENV === "production") {
   environment.plugins.push(
-      require('@fullhuman/postcss-purgecss')({
-        content: ['./app/**/*.html.erb', './app/helpers/**/*.rb'],
-        defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || []
-      })
+    require('@fullhuman/postcss-purgecss')({
+      content: ['./app/**/*.html.erb', './app/helpers/**/*.rb'],
+      defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || []
+    })
   )
 }
 
