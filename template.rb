@@ -162,9 +162,10 @@ after_bundle do
   git add: '.'
   git commit: %Q{ -m 'Initial commit' }
 
-  say "Eci app successfully created!", :blue
   say
-  say "To get started with your amazing app:", :green
+  say "Eci app successfully created!", :green
+  say
+  say "To get started with your amazing app:"
   say "cd #{app_name} - Move to your amazing app directory."
   say "foreman start - Run Rails and webpack-dev-server."
 end
