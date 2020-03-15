@@ -47,6 +47,7 @@ def add_gems
   gem 'gravatar_image_tag', '~> 1.2'
   gem 'mini_magick', '~> 4.9', '>= 4.9.2'
   gem 'name_of_person', '~> 1.1'
+  gem 'sidekiq', '~> 6.0', '>= 6.0.5'
 end
 
 def set_application_name
@@ -134,6 +135,16 @@ def add_posts
   insert_into_file "app/models/post.rb", "\n#{content}", after: "class Post < ApplicationRecord"
 end
 
+def add_sidekiq
+  environment "config.active_job.queue_adapter = :sidekiq"
+
+  insert_into_file "config/routes.rb",
+                   "require 'sidekiq/web'\n\n",
+                   before: "Rails.application.routes.draw do"
+
+  route "mount Sidekiq::Web => '/sidekiq'"
+end
+
 def add_friendly_id
   content = <<-RUBY
   extend FriendlyId
@@ -168,6 +179,7 @@ after_bundle do
   add_javascript
   setup_tailwindcss
   add_posts
+  add_sidekiq
   add_friendly_id
   copy_templates
 
