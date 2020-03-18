@@ -10,6 +10,7 @@ Special thanks to [@excid3](https://github.com/excid3) (Creator of GoRails.com) 
 *   Authentication
 *   Webpacker configuration by default
 *   [Tailwind CSS](https://tailwindcss.com/) as a CSS framework
+*   Included testing
 
 #### Roadmap
 
@@ -17,7 +18,7 @@ Special thanks to [@excid3](https://github.com/excid3) (Creator of GoRails.com) 
 - [ ] Use Tailwind CSS components by default
 - [x] Use Sidekiq for background processing
 - [x] Integrate Devise to ActionCable Rails
-- [ ] Setup RSpec for amazing test
+- [x] Setup RSpec, FactoryBotRails, Faker and much more
 - [ ] Setup Docker out of the box
 
 #### Creating a new amazing app 😍

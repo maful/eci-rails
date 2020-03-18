@@ -48,6 +48,18 @@ def add_gems
   gem 'mini_magick', '~> 4.9', '>= 4.9.2'
   gem 'name_of_person', '~> 1.1'
   gem 'sidekiq', '~> 6.0', '>= 6.0.5'
+
+  gem_group :development, :test do
+    gem 'faker', '~> 2.5'
+    gem 'factory_bot_rails', '~> 5.1'
+    gem 'rspec-rails', '~> 3.8'
+  end
+
+  gem_group :test do
+    gem 'database_cleaner', '~> 1.7'
+    gem 'simplecov', '~> 0.18.5', require: false
+    gem 'shoulda-matchers', '~> 4.1'
+  end
 end
 
 def set_application_name
@@ -119,9 +131,11 @@ def copy_templates
   copy_file "Procfile"
   copy_file "Procfile.dev"
   copy_file ".foreman"
+  copy_file ".rspec"
 
   directory "app", force: true
   directory "config", force: true
+  directory "spec", force: true
 end
 
 def add_posts
@@ -154,6 +168,20 @@ def add_friendly_id
   insert_into_file "app/models/post.rb", "\n#{content}", after: "class Post < ApplicationRecord"
 end
 
+def add_testing
+  # remove test folder
+  if File.directory?('test')
+    FileUtils.rm_rf('test')
+  end
+
+  content = <<-TEXT
+/.ideacoverage
+coverage
+  TEXT
+
+  append_to_file ".gitignore", "\n#{content}"
+end
+
 def stop_spring
   run "spring stop"
 end
@@ -181,6 +209,7 @@ after_bundle do
   add_posts
   add_sidekiq
   add_friendly_id
+  add_testing
   copy_templates
 
   # Migrate
