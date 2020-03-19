@@ -60,6 +60,8 @@ def add_gems
     gem 'simplecov', '~> 0.18.5', require: false
     gem 'shoulda-matchers', '~> 4.1'
   end
+
+  gsub_file "Gemfile", /gem 'capybara'/, "gem 'capybara', '~> 3.31'"
 end
 
 def set_application_name
